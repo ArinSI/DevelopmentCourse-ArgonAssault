@@ -15,7 +15,8 @@ public class Projectile : MonoBehaviour
 
     //Set Up Components
     private EnemyHealth enemyHealth;
-
+    private PlayerHealth playerHealth;
+   
 
     //Set Up Bools
     private bool isCollided = false;
@@ -52,6 +53,14 @@ public class Projectile : MonoBehaviour
 
         if (other.CompareTag("Ground"))
         {
+            Debug.Log("Collided With" + other);
+            HandleProjectile();
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            playerHealth = other.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(Damage);
             Debug.Log("Collided With" + other);
             HandleProjectile();
         }

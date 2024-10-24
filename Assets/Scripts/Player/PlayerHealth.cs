@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     //Declare Public Variables
     public int MaxHealth;
 
     //Declare Private Variables
-    private int Health;
+    [SerializeField] private int Health;
 
-    //Declare Bools
     public bool isDead = false;
 
+    // Start is called before the first frame update
     void Start()
     {
         Health = MaxHealth;
@@ -30,7 +30,8 @@ public class EnemyHealth : MonoBehaviour
         {
             Health = 0;
             isDead = true;
-           //Enter Kill Function Here
+            Time.timeScale = 0;
+            
         }
 
     }
